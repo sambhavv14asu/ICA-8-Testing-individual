@@ -75,9 +75,10 @@ public class UrinalsTest {
     }
 
     @Test
-    void writeToFileBadFilenameException(){
+    void writeToFileBadFilenameException() throws IOException {
+        String currentPath = new java.io.File(".").getCanonicalPath();
         Exception exception = Assertions.assertThrows(Exception.class
-                , () -> Urinals.writeToFile(new ArrayList<>(), "badname.file"));
+                , () -> Urinals.writeToFile(new ArrayList<>() , currentPath, "badname.file"));
         assertEquals("Bad Filename", exception.getMessage());
         System.out.println("====== Sambhav Kapoor == TEST TEN EXECUTED =======");
     }
@@ -91,13 +92,23 @@ public class UrinalsTest {
         ArrayList<Integer> two = new ArrayList();
         two.add(3);
         two.add(4);
-        Urinals.writeToFile(one, "rule.txt");
-        Urinals.writeToFile(two, "rule.txt");
         String currentPath = new java.io.File(".").getCanonicalPath();
+        Urinals.writeToFile(one, currentPath,"rule.txt");
+        Urinals.writeToFile(two, currentPath, "rule.txt");
         File file1 = new File(currentPath, "rule" + (Urinals.number) +".txt");
         File file2 = new File(currentPath, "rule" + (++Urinals.number-1) +".txt");
         Assertions.assertTrue(file1.exists());
         Assertions.assertTrue(file2.exists());
+        System.out.println("====== Sambhav Kapoor == TEST ELEVEN EXECUTED =======");
     }
 
+    @Test
+    void writeToFileIOException(){
+        ArrayList<Integer> one = new ArrayList();
+        one.add(1);
+        one.add(2);
+        Assertions.assertThrows(IOException.class
+                , () -> Urinals.writeToFile(one, "gibberish/path", "rule.txt"));
+        System.out.println("====== Sambhav Kapoor == TEST TWELVE EXECUTED =======");
+    }
 }

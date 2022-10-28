@@ -78,11 +78,10 @@ public class Urinals {
         return inputList;
     }
 
-    public static void writeToFile(List<Integer> outputs, String filename) throws Exception {
+    public static void writeToFile(List<Integer> outputs, String currentPath, String filename) throws Exception {
         if(!filename.equals("rule.txt")){
             throw new Exception("Bad Filename");
         }
-        String currentPath = new java.io.File(".").getCanonicalPath();
         File file = new File(currentPath, filename);
         while(file.exists()) {
             filename = "rule" + (++number) +".txt";
