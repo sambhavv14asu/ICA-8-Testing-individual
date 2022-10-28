@@ -1,9 +1,7 @@
 // Author name - Sambhav Kapoor
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -96,6 +94,43 @@ public class Urinals {
         fr.close();
     }
     public static void main(String[] args) throws Exception {
+            System.out.println("Press 1 for keyboard input, 2 for file and 3 for exit");
+            Scanner scn =new Scanner(System.in);
+            String s = scn.nextLine();
+            switch (s){
+                case "1":
+                    System.out.println("Enter multiple inputs, enter -1 to stop");
+                    ArrayList<String> keyboardInputs = new ArrayList<>();
+                    while (scn.hasNextLine())
+                    {
+                        String  keyboardInput = scn.nextLine();
+                        if(keyboardInput.equals("-1")){
+                            break;
+                        }
+                        keyboardInputs.add(keyboardInput);
+                    }
 
+                    scn.close();
+                    for(String j : keyboardInputs){
+                        System.out.println(countFreeUrinals(j));
+                    }
+                    break;
+                case "2":
+                    System.out.println("Using the urinal.dat file for input");
+                    List<String> inputs=readStringsFromFile("urinal.dat");
+                    List<Integer> outputs= new ArrayList<>();
+                    for(String input: inputs){
+                        if(!checkValidString(input)){
+                            outputs.add(-1);
+                        }else{
+                            outputs.add(countFreeUrinals(input));
+                        }
+                    }
+                    String currentPath = new java.io.File(".").getCanonicalPath();
+                    writeToFile(outputs, currentPath, "rule.txt");
+                    break;
+                default:
+                    System.out.println("Selected a wrong option");
+            }
     }
 }
