@@ -34,7 +34,24 @@ public class Urinals {
                 return 0;
             }
         }
+        for(int i=0;i<sb.length();i++){
+            char c = sb.charAt(i);
+            if(c=='0') {
+                if (i == 0 && sb.charAt(i + 1) == '0') {
+                    sb.setCharAt(i, '1');
+                    count += 1;
+                } else if (i == sb.length() - 1 && sb.charAt(i - 1) == '0') {
+                    sb.setCharAt(i, '1');
+                    count += 1;
+                } else if(i>0 && i<sb.length()-1){
+                    if(sb.charAt(i-1) == '0' && sb.charAt(i+1) == '0'){
+                        sb.setCharAt(i, '1');
+                        count+=1;
+                    }
+                }
+            }
 
+        }
         return count;
     }
 
