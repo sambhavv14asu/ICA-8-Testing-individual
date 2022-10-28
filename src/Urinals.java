@@ -2,6 +2,7 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 
 public class Urinals {
 
+    static int number=0;
     public static boolean checkValidString(String s) {
         if(s.contains("11")) {
             return false;
@@ -80,8 +82,21 @@ public class Urinals {
         if(!filename.equals("rule.txt")){
             throw new Exception("Bad Filename");
         }
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        File file = new File(currentPath, filename);
+        while(file.exists()) {
+            filename = "rule" + (++number) +".txt";
+            file = new File(currentPath, filename);
+        }
+        FileWriter fr = null;
+        fr = new FileWriter(file);
+        for(int i=0;i<outputs.size();i++){
+            fr.write(String.valueOf(outputs.get(i)));
+            fr.write("\n");
+        }
+        fr.close();
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
     }
 }

@@ -1,11 +1,13 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UrinalsTest {
 
@@ -78,6 +80,24 @@ public class UrinalsTest {
                 , () -> Urinals.writeToFile(new ArrayList<>(), "badname.file"));
         assertEquals("Bad Filename", exception.getMessage());
         System.out.println("====== Sambhav Kapoor == TEST TEN EXECUTED =======");
+    }
+
+    //Even if we pass rule.txt multiple times, it would create filename by incrementing the number
+    @Test
+    void writeToFileDuplicateName() throws Exception {
+        ArrayList<Integer> one = new ArrayList();
+        one.add(1);
+        one.add(2);
+        ArrayList<Integer> two = new ArrayList();
+        two.add(3);
+        two.add(4);
+        Urinals.writeToFile(one, "rule.txt");
+        Urinals.writeToFile(two, "rule.txt");
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        File file1 = new File(currentPath, "rule" + (Urinals.number) +".txt");
+        File file2 = new File(currentPath, "rule" + (++Urinals.number-1) +".txt");
+        Assertions.assertTrue(file1.exists());
+        Assertions.assertTrue(file2.exists());
     }
 
 }
