@@ -25,8 +25,17 @@ public class Urinals {
         if(!checkValidString(s)){
             return -1;
         }
+        StringBuilder sb = new StringBuilder(s);
+        int count=0;
+        if(s.length() == 1){
+            if(s.charAt(0) == '0'){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
 
-        return 0;
+        return count;
     }
 
     public static void main(String[] args) throws IOException {

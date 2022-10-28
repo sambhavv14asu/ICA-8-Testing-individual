@@ -29,4 +29,12 @@ public class UrinalsTest {
         Assertions.assertEquals( -1 , Urinals.countFreeUrinals("abcd"));
         System.out.println("====== Sambhav Kapoor == TEST FOUR EXECUTED =======");
     }
+
+    @Test
+    void countFreeUrinals2()
+    {
+        Assertions.assertEquals( 1 , Urinals.countFreeUrinals("0"));
+        System.out.println("====== Sambhav Kapoor == TEST FIVE EXECUTED =======");
+    }
+
 }
