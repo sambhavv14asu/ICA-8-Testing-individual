@@ -21,6 +21,13 @@ public class Urinals {
         return true;
     }
 
+    public static int countFreeUrinals(String s) {
+        if(!checkValidString(s)){
+            return -1;
+        }
+
+        return 0;
+    }
 
     public static void main(String[] args) throws IOException {
 
