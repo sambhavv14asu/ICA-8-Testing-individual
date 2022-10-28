@@ -10,6 +10,14 @@ import java.util.Scanner;
 public class Urinals {
 
     public static boolean checkValidString(String s) {
+        if(s.contains("11")) {
+            return false;
+        }
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)!='0' && s.charAt(i)!='1'){
+                return false;
+            }
+        }
         return true;
     }
 
