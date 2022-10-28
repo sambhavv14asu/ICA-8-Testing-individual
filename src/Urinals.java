@@ -55,8 +55,14 @@ public class Urinals {
         return count;
     }
 
+    public static List<String> readStringsFromFile(String filename) throws IOException, FileNotFoundException {
+        List<String> inputList = new ArrayList<>();
+        String currentPath = new java.io.File(".").getCanonicalPath();
+        File file = new File(currentPath, filename);
+        Scanner myReader = new Scanner(file);
+        return inputList;
+    }
     public static void main(String[] args) throws IOException {
-
 
     }
 }

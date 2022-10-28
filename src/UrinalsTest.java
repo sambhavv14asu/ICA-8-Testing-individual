@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 public class UrinalsTest {
 
     @Test
@@ -44,4 +46,10 @@ public class UrinalsTest {
         System.out.println("====== Sambhav Kapoor == TEST SIX EXECUTED =======");
     }
 
+    @Test
+    void readStringsFromFileNotFoundException(){
+        Assertions.assertThrows(FileNotFoundException.class
+                , () -> Urinals.readStringsFromFile("gibberish.dat"));
+        System.out.println("====== Sambhav Kapoor == TEST SEVEN EXECUTED =======");
+    }
 }
