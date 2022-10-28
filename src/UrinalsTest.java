@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -70,4 +71,13 @@ public class UrinalsTest {
                 , () -> Urinals.readStringsFromFile("ioException.dat"));
         System.out.println("====== Sambhav Kapoor == TEST NINE EXECUTED =======");
     }
+
+    @Test
+    void writeToFileBadFilenameException(){
+        Exception exception = Assertions.assertThrows(Exception.class
+                , () -> Urinals.writeToFile(new ArrayList<>(), "badname.file"));
+        assertEquals("Bad Filename", exception.getMessage());
+        System.out.println("====== Sambhav Kapoor == TEST TEN EXECUTED =======");
+    }
+
 }

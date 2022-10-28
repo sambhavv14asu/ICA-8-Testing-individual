@@ -75,6 +75,12 @@ public class Urinals {
         myReader.close();
         return inputList;
     }
+
+    public static void writeToFile(List<Integer> outputs, String filename) throws Exception {
+        if(!filename.equals("rule.txt")){
+            throw new Exception("Bad Filename");
+        }
+    }
     public static void main(String[] args) throws IOException {
 
     }
