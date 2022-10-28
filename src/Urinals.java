@@ -12,7 +12,7 @@ public class Urinals {
 
     static int number=0;
     public static boolean checkValidString(String s) {
-        if(s.contains("11")) {
+        if(s.length() > 20 || s.length()<1 || s.contains("11")) {
             return false;
         }
         for(int i=0;i<s.length();i++){

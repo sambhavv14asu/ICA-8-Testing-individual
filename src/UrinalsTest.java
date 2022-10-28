@@ -32,31 +32,38 @@ public class UrinalsTest {
     }
 
     @Test
+    void testCheckValidString4()
+    {
+        assertEquals( false , Urinals.checkValidString("1010101010101010101010101010101010101"));
+        System.out.println("====== Sambhav Kapoor == TEST FOUR EXECUTED =======");
+    }
+
+    @Test
     void countFreeUrinals1()
     {
         assertEquals( -1 , Urinals.countFreeUrinals("abcd"));
-        System.out.println("====== Sambhav Kapoor == TEST FOUR EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST FIVE EXECUTED =======");
     }
 
     @Test
     void countFreeUrinals2()
     {
         assertEquals( 1 , Urinals.countFreeUrinals("0"));
-        System.out.println("====== Sambhav Kapoor == TEST FIVE EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST SIX EXECUTED =======");
     }
 
     @Test
     void countFreeUrinals3()
     {
         assertEquals( 2 , Urinals.countFreeUrinals("00001"));
-        System.out.println("====== Sambhav Kapoor == TEST SIX EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST SEVEN EXECUTED =======");
     }
 
     @Test
     void readStringsFromFileNotFoundException(){
         Assertions.assertThrows(FileNotFoundException.class
                 , () -> Urinals.readStringsFromFile("gibberish.dat"));
-        System.out.println("====== Sambhav Kapoor == TEST SEVEN EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST EIGHT EXECUTED =======");
     }
 
     @Test
@@ -64,14 +71,14 @@ public class UrinalsTest {
         Exception exception = Assertions.assertThrows(Exception.class
                 , () -> Urinals.readStringsFromFile("TestEmptyFile.dat"));
         assertEquals("Empty File Exception", exception.getMessage());
-        System.out.println("====== Sambhav Kapoor == TEST EIGHT EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST NINE EXECUTED =======");
     }
 
     @Test
     void readStringsFromFileIOException(){
         Assertions.assertThrows(IOException.class
                 , () -> Urinals.readStringsFromFile("ioException.dat"));
-        System.out.println("====== Sambhav Kapoor == TEST NINE EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST TEN EXECUTED =======");
     }
 
     @Test
@@ -80,7 +87,7 @@ public class UrinalsTest {
         Exception exception = Assertions.assertThrows(Exception.class
                 , () -> Urinals.writeToFile(new ArrayList<>() , currentPath, "badname.file"));
         assertEquals("Bad Filename", exception.getMessage());
-        System.out.println("====== Sambhav Kapoor == TEST TEN EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST ELEVEN EXECUTED =======");
     }
 
     //Even if we pass rule.txt multiple times, it would create filename by incrementing the number
@@ -99,7 +106,7 @@ public class UrinalsTest {
         File file2 = new File(currentPath, "rule" + (++Urinals.number-1) +".txt");
         Assertions.assertTrue(file1.exists());
         Assertions.assertTrue(file2.exists());
-        System.out.println("====== Sambhav Kapoor == TEST ELEVEN EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST TWELVE EXECUTED =======");
     }
 
     @Test
@@ -109,6 +116,6 @@ public class UrinalsTest {
         one.add(2);
         Assertions.assertThrows(IOException.class
                 , () -> Urinals.writeToFile(one, "gibberish/path", "rule.txt"));
-        System.out.println("====== Sambhav Kapoor == TEST TWELVE EXECUTED =======");
+        System.out.println("====== Sambhav Kapoor == TEST THIRTEEN EXECUTED =======");
     }
 }
